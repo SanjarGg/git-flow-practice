@@ -1,0 +1,52 @@
+class Student {
+  constructor(name, grade) {
+    this.name = name;
+    this.grade = grade;
+  }
+
+  introduce() {
+    console.log(`Hello, I'm ${this.name} and I'm in grade ${this.grade}.`);
+  }
+}
+
+class Subject {
+  constructor(name) {
+    this.name = name;
+    this.assignments = [];
+  }
+
+  addAssignment(assignment) {
+    this.assignments.push(assignment);
+    console.log(`Assignment "${assignment}" added to ${this.name}.`);
+  }
+}
+
+class Diary {
+  constructor(student) {
+    this.student = student;
+    this.subjects = [];
+  }
+
+  addSubject(subject) {
+    this.subjects.push(subject);
+    console.log(`Subject ${subject.name} added to ${this.student.name}'s diary.`);
+  }
+
+  showAssignments() {
+    console.log(`${this.student.name}'s Assignments:`);
+    this.subjects.forEach(subject => {
+      console.log(`- ${subject.name}: ${subject.assignments.join(', ')}`);
+    });
+  }
+}
+
+
+let student = new Student('Alice', 5);
+let math = new Subject('Math');
+let diary = new Diary(student);
+
+
+student.introduce();           
+math.addAssignment('Algebra'); 
+diary.addSubject(math);        
+diary.showAssignments();    
